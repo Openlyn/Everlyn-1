@@ -1,0 +1,187 @@
+[dist initialize] mp method=spawn[dist initialize] mp method=spawn
+
+[dist initialize] mp method=spawn[dist initialize] mp method=spawn
+
+[lrk=0, rk=0]
+[lrk=1, rk=1]
+[lrk=3, rk=3]
+[lrk=2, rk=2]
+args.world_size: 4
+args.world_size: 4
+args.world_size: 4
+args.world_size: 4
+dataset_dir: /online1/ycsc_xfangam/xfangam/sunset/data/
+dataset_name: FFHQ
+global_batch_size: 128
+workers: 8
+resize_rate: 1.125
+resolution: 256
+ms_patch_size: 1_2_3_4_5_6_8_10_13_16
+std: 0.05
+max_patch_size: 16
+codebook_size: 50000
+codebook_dim: 16
+vgg_checkpoint: /online1/ycsc_xfangam/xfangam/sunset/output/VGG
+latent_reso: 32
+latent_dim: 4
+feature_dim: 256
+ae_config_path: /online1/ycsc_xfangam/xfangam/sunset/model/yaml_files/vq-f16.yaml
+alpha: 0.2
+beta: 0.2
+gamma: 0.0
+lambd: 1.0
+rate_d: 0.2
+model_name: wasserstein_quantizer
+resume: False
+disc_start: 50000
+epochs: 200
+seed: 12
+grad_clip: 1.0
+ae_lr: 0.0005
+weight_decay: 0.05
+warmup_epochs: 5
+checkpoint_dir: /online1/ycsc_xfangam/xfangam/sunset/output/wasserstein_quantizer/FFHQ/checkpoint/
+results_dir: /online1/ycsc_xfangam/xfangam/sunset/output/wasserstein_quantizer/FFHQ/results/
+saver_dir: /online1/ycsc_xfangam/xfangam/sunset/output/wasserstein_quantizer/FFHQ/saver/
+nnodes: -1
+node_rank: -1
+local_rank: -1
+dist_url: tcp://224.66.41.62:23456
+dist_backend: nccl
+rec_image_dir: /online1/ycsc_xfangam/xfangam/sunset/output/wasserstein_quantizer/FFHQ/rec_images/
+rec_results_dir: /online1/ycsc_xfangam/xfangam/sunset/output/wasserstein_quantizer/FFHQ/rec_results/
+rec_name: Codebook-100000
+batch_size: 32
+world_size: 4
+ms_token_size: (1, 2, 3, 4, 5, 6, 8, 10, 13, 16)
+factor: 2
+data_pre: FFHQ
+model_pre: model_50000_16_32_4_256
+loss_pre: loss_0.2_0.2_0.0_1.0_0.2
+training_pre: wasserstein_quantizer_200_0.0005
+saver_name_pre: wasserstein_quantizer_200_0.0005_FFHQ_model_50000_16_32_4_256_loss_0.2_0.2_0.0_1.0_0.2
+model:
+  learning_rate: 4.5e-06
+  params:
+    ddconfig:
+      attn_resolutions:
+      - 16
+      ch: 128
+      ch_mult:
+      - 1
+      - 1
+      - 2
+      - 2
+      double_z: false
+      dropout: 0.0
+      in_channels: 3
+      num_res_blocks: 2
+      out_ch: 3
+      resolution: 256
+      z_channels: 256
+    embed_dim: 16
+    monitor: val/rec_loss
+  target: vqvae.VQVAE
+
+ch_mult: [1, 1, 2, 2]
+model:
+  learning_rate: 4.5e-06
+  params:
+    ddconfig:
+      attn_resolutions:
+      - 16
+      ch: 128
+      ch_mult:
+      - 1
+      - 1
+      - 2
+      - 2
+      double_z: false
+      dropout: 0.0
+      in_channels: 3
+      num_res_blocks: 2
+      out_ch: 3
+      resolution: 256
+      z_channels: 256
+    embed_dim: 16
+    monitor: val/rec_loss
+  target: vqvae.VQVAE
+
+ch_mult:model:
+  learning_rate: 4.5e-06
+  params:
+    ddconfig:
+      attn_resolutions:
+      - 16
+      ch: 128
+      ch_mult:
+      - 1
+      - 1
+      - 2
+      - 2
+      double_z: false
+      dropout: 0.0
+      in_channels: 3
+      num_res_blocks: 2
+      out_ch: 3
+      resolution: 256
+      z_channels: 256
+    embed_dim: 16
+    monitor: val/rec_loss
+  target: vqvae.VQVAE
+model:
+  learning_rate: 4.5e-06
+  params:
+    ddconfig:
+      attn_resolutions:
+      - 16
+      ch: 128
+      ch_mult:
+      - 1
+      - 1
+      - 2
+      - 2
+      double_z: false
+      dropout: 0.0
+      in_channels: 3
+      num_res_blocks: 2
+      out_ch: 3
+      resolution: 256
+      z_channels: 256
+    embed_dim: 16
+    monitor: val/rec_loss
+  target: vqvae.VQVAE
+ 
+
+[1, 1, 2, 2]
+ch_mult: [1, 1, 2, 2]ch_mult:
+ [1, 1, 2, 2]
+Working with z of shape (1, 256, 32, 32) = 262144 dimensions.
+Working with z of shape (1, 256, 32, 32) = 262144 dimensions.
+Working with z of shape (1, 256, 32, 32) = 262144 dimensions.Working with z of shape (1, 256, 32, 32) = 262144 dimensions.
+
+loaded pretrained LPIPS loss from model/vgg.pth
+loaded pretrained LPIPS loss from model/vgg.pth
+loaded pretrained LPIPS loss from model/vgg.pth
+loaded pretrained LPIPS loss from model/vgg.pth
+dataset name: FFHQ
+len train_set: 70000
+len val_set: 70000
+Start training...Start training...Start training...
+Start training...
+
+epoch:1, ae_lr:0.000500
+epoch:1, ae_lr:0.000500epoch:1, ae_lr:0.000500
+
+epoch:1, ae_lr:0.000500
+epoch:1, disc_lr:0.000500epoch:1, disc_lr:0.000500
+
+epoch:1, disc_lr:0.000500
+
+epoch:1, disc_lr:0.000500
+Train Epoch: [1/200] Iters:[10/546] ae_loss 1.3972, rec_loss 0.4980, commit_loss 0.0399, vq_loss 0.1697, lpips_loss 0.8573, wasserstein_loss 0.6365, g_loss 0.0934, perplexity 10515.7132, codebook_utilization 0.5349,
+Train Epoch: [1/200] Iters:[20/546] ae_loss 1.2933, rec_loss 0.4392, commit_loss 0.0326, vq_loss 0.1386, lpips_loss 0.8198, wasserstein_loss 0.5496, g_loss 0.1076, perplexity 10203.3021, codebook_utilization 0.5274,
+Train Epoch: [1/200] Iters:[30/546] ae_loss 1.2157, rec_loss 0.3919, commit_loss 0.0271, vq_loss 0.1152, lpips_loss 0.7953, wasserstein_loss 0.4889, g_loss 0.1208, perplexity 9470.6871, codebook_utilization 0.5116,
+Train Epoch: [1/200] Iters:[40/546] ae_loss 1.1613, rec_loss 0.3599, commit_loss 0.0239, vq_loss 0.1015, lpips_loss 0.7764, wasserstein_loss 0.4565, g_loss 0.1266, perplexity 8768.7089, codebook_utilization 0.4924,
+Train Epoch: [1/200] Iters:[50/546] ae_loss 1.1182, rec_loss 0.3355, commit_loss 0.0219, vq_loss 0.0929, lpips_loss 0.7597, wasserstein_loss 0.4381, g_loss 0.1304, perplexity 8301.1896, codebook_utilization 0.4771,
+Train Epoch: [1/200] Iters:[60/546] ae_loss 1.0218, rec_loss 0.2813, commit_loss 0.0167, vq_loss 0.0711, lpips_loss 0.7229, wasserstein_loss 0.3877, g_loss 0.1374, perplexity 7373.4609, codebook_utilization 0.4484,

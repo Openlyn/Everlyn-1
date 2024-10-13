@@ -1,0 +1,62 @@
+model:
+  base_learning_rate: 1.0e-04
+  target: easyanimate.vae.ldm.models.omnigen_casual3dcnn.AutoencoderKLMagvit_fromOmnigen
+  params:
+    monitor: train/rec_loss
+    ckpt_path: models/videoVAE_omnigen_8x8x4_from_vae-ft-mse-840000-ema-pruned.ckpt
+    down_block_types: ("SpatialDownBlock3D", "SpatialTemporalDownBlock3D", "SpatialTemporalDownBlock3D",
+      "SpatialTemporalDownBlock3D",)
+    up_block_types: ("SpatialUpBlock3D", "SpatialTemporalUpBlock3D", "SpatialTemporalUpBlock3D",
+      "SpatialTemporalUpBlock3D",)
+    lossconfig:
+      target: easyanimate.vae.ldm.modules.losses.LPIPSWithDiscriminator
+      params:
+        disc_start: 50001
+        kl_weight: 1.0e-06
+        disc_weight: 0.5
+        l2_loss_weight: 0.1
+        l1_loss_weight: 1.0
+        perceptual_weight: 1.0
+
+data:
+  target: train_vae.DataModuleFromConfig
+
+  params:
+    batch_size: 2
+    wrap: true
+    num_workers: 4
+    train:
+      target: easyanimate.vae.ldm.data.dataset_image_video.CustomSRTrain
+      params:
+        data_json_path: pretrain.json
+        data_root: /your_data_root # This is used in relative path
+        size: 128
+        degradation: pil_nearest
+        video_size: 128
+        video_len: 9
+        slice_interval: 1
+    validation:
+      target: easyanimate.vae.ldm.data.dataset_image_video.CustomSRValidation
+      params:
+        data_json_path: pretrain.json
+        data_root: /your_data_root # This is used in relative path
+        size: 128
+        degradation: pil_nearest
+        video_size: 128
+        video_len: 9
+        slice_interval: 1
+
+lightning:
+  callbacks:
+    image_logger:
+      target: train_vae.ImageLogger
+      params:
+        batch_frequency: 5000
+        max_images: 8
+        increase_log_steps: True
+
+  trainer:
+    benchmark: True
+    accumulate_grad_batches: 1
+    gpus: "0"
+    num_nodes: 1

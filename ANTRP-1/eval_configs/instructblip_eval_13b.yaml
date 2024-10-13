@@ -1,0 +1,23 @@
+model:
+  arch: blip2_vicuna_instruct
+  model_type: vicuna13b
+  max_txt_len: 128
+  # end_sym: "###"
+  # low_resource: True
+  # prompt_template: '###Human: {} ###Assistant: '
+  # ckpt: '/mnt/petrelfs/share_data/huangqidong/lvlm/minigpt4/prerained_minigpt4_7b.pth'
+
+
+datasets:
+  cc_sbu_align:
+    vis_processor:
+      train:
+        name: "blip2_image_eval"
+        image_size: 224
+    text_processor:
+      train:
+        name: "blip_caption"
+
+run:
+  task: image_text_pretrain
+  seed: 42

@@ -1,0 +1,1 @@
+python compute_fid.py

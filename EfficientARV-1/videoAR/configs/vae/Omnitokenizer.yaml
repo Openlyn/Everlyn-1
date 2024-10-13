@@ -1,0 +1,2 @@
+vae_kwargs:
+  vqgan_ckpt: "checkpoints/OmniTokenizer/VAE/imagenet_ucf.ckpt"
