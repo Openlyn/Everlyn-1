@@ -1,33 +1,0 @@
-09-25-16:31
-PARAMETER ...
-Namespace(model='minigpt4', pope_type='coco_popular', gpu_id=0, data_path='/mnt/sda/feilongtang/Hallucination/datasets/mscoco/val2014', batch_size=4, num_workers=1, answers_file='', noise_step=500, use_cd=False, use_icd=False, use_vcd=False, sample_greedy=True, use_fast_v=False, fast_v_inplace=False, fast_v_attention_rank=5, fast_v_attention_rank_add=100, fast_v_agg_layer=2, fast_v_sys_length=None, fast_v_image_token_length=None, beam=5, sample=True, scale_factor=50, threshold=15, num_attn_candidates=5, penalty_weights=1.0, opera=True, cd_alpha=1.0, cd_beta=0.1, options=None)
-Initializing Model
-Loading VIT
-Loading VIT Done
-Loading Q-Former
-Loading Q-Former Done
-Loading LLAMA
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:06<00:06,  6.61s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:08<00:00,  4.10s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:08<00:00,  4.48s/it]
-Loading LLAMA Done
-Load BLIP2-LLM Checkpoint: /mnt/sda/feilongtang/Hallucination/SID/models/minigpt4/prerained_minigpt4_7b.pth
-Compose(
-    Resize(size=(224, 224), interpolation=bicubic, max_size=None, antialias=warn)
-    ToTensor()
-    Normalize(mean=(0.48145466, 0.4578275, 0.40821073), std=(0.26862954, 0.26130258, 0.27577711))
-)
-Done!
-load data finished
-Start eval...
-INFO:minigpt4:Accuracy: 0.617
-INFO:minigpt4:Precision: 0.7510729613733905
-INFO:minigpt4:Recall: 0.35
-INFO:minigpt4:F1 score: 0.47748976807639837
-INFO:minigpt4:Yes ratio: 0.233
-[50, 5]===============================================
-TP	FP	TN	FN	
-525	174	1326	975
-Accuracy: 0.617
-Precision: 0.7510729613733905
-Recall: 0.35
-F1 score: 0.47748976807639837
-Yes ratio: 0.233

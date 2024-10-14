@@ -1,0 +1,9 @@
+[submodule "Wasserstein-VQ"]
+	path = Wasserstein-VQ
+	url = https://github.com/Openlyn/Wasserstein-VQ.git
+[submodule "ANTRP"]
+	path = ANTRP
+	url = https://github.com/Openlyn/ANTRP.git
+[submodule "EfficientARV"]
+	path = EfficientARV
+	url = https://github.com/Openlyn/EfficientARV.git
